@@ -1,0 +1,19 @@
+{
+  "name": "electron-react",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Using: electron, electron-builder, react, parcel v2, lerna",
+  "scripts": {
+    "start": "lerna exec --parallel --stream yarn start",
+    "build": "lerna run build --stream",
+    "predist": "yarn build",
+    "dist": "lerna run dist --stream"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.2.0",
+    "lerna": "^3.20.2",
+    "parcel": "^2.0.0-alpha.3.2"
+  },
+  "main": "index.js",
+  "author": "Long Nguyen <nguyen_van_long@humancrest.co.jp>"
+}

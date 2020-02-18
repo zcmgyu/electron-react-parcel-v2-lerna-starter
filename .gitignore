@@ -1,0 +1,19 @@
+# NodeJS
+node_modules
+npm-debug.log
+
+# MacOS
+.env
+.DS_Store
+
+# Parcel
+.parcel-cache
+.cache
+
+# Build
+release
+dist
+build
+
+# Yarn
+yarn-error.log

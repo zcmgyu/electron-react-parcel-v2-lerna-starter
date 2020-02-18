@@ -1,0 +1,71 @@
+{
+  "name": "@electron/main",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "./build/main/index.js",
+  "targets": {
+    "main": {
+      "context": "electron-main"
+    }
+  },
+  "scripts": {
+    "start": "NODE_ENV=development electron -r @babel/register ./src/index.js",
+    "prebuild": "copyfiles -u 3 ../renderer/dist/* build/renderer/ && rm -rf ../renderer/dist",
+    "build": "parcel build ./src/index.js",
+    "dist": "electron-builder build",
+    "postdist": "rm -rf build && mv release ../../"
+  },
+  "build": {
+    "productName": "Dockyard Appium Server",
+    "asar": false,
+    "protocols": {
+      "name": "Dockyard Appium Server",
+      "schemes": [
+        "dockyard-appium-server"
+      ]
+    },
+    "appId": "jp.co.humancrest.docyard.appium-server",
+    "files": [
+      "./build/**/*"
+    ],
+    "mac": {
+      "category": "jp.co.humancrest.docyard.appium-server",
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {},
+    "linux": {
+      "target": [
+        "deb",
+        "rpm",
+        "snap",
+        "AppImage"
+      ],
+      "category": "jp.co.humancrest.docyard.appium-server"
+    },
+    "directories": {
+      "buildResources": "assets",
+      "output": "release"
+    }
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/parser": "^7.8.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "@babel/register": "^7.8.3",
+    "@electron/renderer": "1.2.0",
+    "electron": "^8.0.1",
+    "lerna": "^3.20.2",
+    "parcel": "^2.0.0-alpha.3.2"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.8.3",
+    "electron-debug": "^3.0.1",
+    "electron-is-dev": "^1.1.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  }
+}
